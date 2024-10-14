@@ -1,0 +1,10 @@
+div::selection {
+  background-color: #ff0000;
+  color: #fff;
+}
+
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 2px red;
+  font-weight: 900;
+}

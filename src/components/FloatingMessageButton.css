@@ -1,0 +1,66 @@
+/* Floating button container */
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: 
+    #f9041c; /* Bootstrap's danger (red) color */
+    color: #e6e0e0;
+    border-radius: 50%;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15); /* More defined shadow */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    z-index: 1000;  /* Ensures the button stays above other elements */
+    border: 2px solid #fcf7f7; /* Add a white border */
+    animation: pulse 2s infinite; /* Pulsing animation */
+  }
+  
+  /* Hover effects */
+  .floating-button:hover {
+    transform: scale(1.2); /* Slightly larger on hover */
+    background-color: #bd2130; /* Darker red on hover */
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Bigger shadow on hover */
+  }
+  
+  /* Tooltip for button */
+  .floating-button::after {
+    content: "Message Us";
+    position: absolute;
+    bottom: 60px; /* Position the tooltip above the button */
+    right: 50%;
+    transform: translateX(50%);
+    background-color: #333;
+    color: #f0eaea;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  /* Show tooltip on hover */
+  .floating-button:hover::after {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Pulsing animation */
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+    }
+    70% {
+      transform: scale(1.05);
+      box-shadow: 0 0 0 15px rgba(220, 53, 69, 0);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+    }
+  }

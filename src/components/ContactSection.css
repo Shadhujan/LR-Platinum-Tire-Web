@@ -1,0 +1,12 @@
+/* ContactSection.css */
+.phone-link,.email-link {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .phone-link:hover,.email-link:hover {
+    color: #dc3545; /* Bootstrap's danger red color */
+    transform: scale(1.1); /* Slight zoom on hover */
+    cursor: pointer;
+  }
