@@ -80,7 +80,7 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="#" className="nav-link" activeClassName="active">
+            <NavLink to="/Login" className="nav-link" activeClassName="active">
               <i className="bi bi-person-fill"></i>
             </NavLink>
           </li>

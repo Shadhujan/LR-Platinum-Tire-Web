@@ -1,0 +1,5 @@
+.login-page, .register-page {
+    background: linear-gradient(135deg, #ff4d4d, #ff0000);
+    height: 100vh;
+    margin: 0;
+  }

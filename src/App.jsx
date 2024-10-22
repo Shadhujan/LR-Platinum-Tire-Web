@@ -13,6 +13,8 @@ import Cart from './pages/Cart';
 import FloatingMessageButton from './components/FloatingMessageButton';
 import Message from './components/MessageSection';
 import ReviewFormSection from './components/ReviewFormSection'
+import Login from './pages/Login';
+import Register from './components/RegisterCard';
 
 
 
@@ -31,6 +33,9 @@ function App() {
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/Message" element={<Message/>}/>
           <Route path="/reviewform" element={<ReviewForm/>}/>
+          <Route path="/Login" element={<Login/>}/>
+          <Route path='/Register' element={<Register/>}/>
+          
 
         </Routes>
         <FloatingMessageButton/>
