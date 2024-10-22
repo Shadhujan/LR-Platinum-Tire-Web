@@ -1,0 +1,84 @@
+/* Footer container */
+.footer-container {
+    background-color: #f8f9fa;
+    border-top: 2px solid #e9ecef;
+  }
+  
+  /* Footer base styles */
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Align items to the left */
+    padding: 20px; /* Increased padding for better spacing */
+  }
+  
+  /* Column styles */
+  .footer .col {
+    margin-top: 10px;
+    margin-right: 20px; /* Space between columns */
+  }
+  
+  /* Footer logo */
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  /* Footer navigation */
+  .footer-nav {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-link {
+    color: #6c757d;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-link:hover {
+    color: #007bff; /* Bootstrap primary color */
+  }
+  
+  /* Footer section heading */
+  .footer-title {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 1rem;
+    font-weight: bold; /* Changed to bold for emphasis */
+  }
+  
+  /* Copyright style */
+  .footer-copyright {
+    display: block; /* Ensures it takes up the full width */
+    text-align: center; /* Centers the text for copyright */
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .footer {
+      text-align: left; /* Ensure left alignment on smaller screens */
+      flex-direction: column; /* Stack columns vertically */
+      padding: 20px; /* Ensure enough padding on smaller screens */
+      align-items: flex-start; /* Align items to the start (left) */
+      margin-left:auto; 
+     }
+  
+     .footer .col {
+       margin-bottom: 20px; /* Space between stacked columns */
+       width: auto; /* Allow columns to take full width */
+     }
+  
+     .footer-nav {
+       margin-left:auto; 
+       margin-right:auto; 
+     }
+  }
