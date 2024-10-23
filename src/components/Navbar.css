@@ -1,0 +1,68 @@
+.nav-link {
+    color: #333;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .nav-link:hover {
+    color: white;
+    background-color: #ff533d; /* Change to your preferred hover color */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+      rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  }
+  
+  .nav-link.active {
+    color: #ff6e5b;
+    background-color: #fee3e0;
+    border-radius: 5px;
+  }
+  
+  .nav-link i {
+    font-size: 1.1rem;
+  }
+  
+  .nav-item {
+    margin-right: 25px;
+  }
+  
+  .nav-item:last-child {
+    margin-right: 5;
+  }
+  
+  .header {
+    background-color: #f8f9fa; /* Light background */
+    border-bottom: 2px solid #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo-img {
+    max-height: 57px; /* Adjust the logo height */
+    object-fit: contain;
+  }
+  
+  a.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  a:hover span.fs-4 {
+    color: #ff533d; /* Hover effect for the logo text */
+  }
+  
+  @media (max-width: 768px) {
+    .nav-link {
+      padding: 0.3rem 0.8rem;
+    }
+  
+    .logo-img {
+      max-height: 50px; /* Slightly smaller logo on smaller screens */
+    }
+  }
+  
+  
+  

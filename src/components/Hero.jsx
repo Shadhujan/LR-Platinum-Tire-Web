@@ -7,14 +7,16 @@ const Hero = () => {
   return (
     <div>
       <div className="hero py-5 mb-5 text-center text-white" style={{ backgroundColor: '#000000', width: '100%', height: '700px' }}>
-        <img className="d-block mx-auto my-5" src={logo} alt="" width="900" height="250" />
-          <div className="desc row" style={{ height: '168px', width: '100%', backgroundColor: '#FF0000' }}>
-            <div className="col-md-4"><img src={logo2} alt="" style={{marginTop: '-15px'}} /></div>
-            <div className="col-md-4"><img src={logo3} alt="" /></div>
-            <div className="col-md-4"></div>
+        <img className="d-block mx-auto my-5" src={logo} alt="LR Platinum Tyres Logo" width="900" height="250" />
+        <div className="desc row mx-auto align-items-center" style={{ height: '168px', width: '100%', backgroundColor: '#FF0000' }}>
+          <div className="col-md-4 d-flex justify-content-center">
+            
           </div>
-          {/* <p className="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p> */}
-
+          <div className="col-md-4 d-flex justify-content-center">
+            <img src={logo3} alt="Logo 3" style={{ maxHeight: '150px', objectFit: 'contain' }} />
+          </div>
+          <div className="col-md-4"></div>
+        </div>
       </div>
     </div>
   );
