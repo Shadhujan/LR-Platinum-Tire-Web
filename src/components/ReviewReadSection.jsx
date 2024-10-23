@@ -120,7 +120,7 @@
                           <Button
                             variant="light"
                             className="mr-2"
-                            onClick={() => navigate(`../ReviewEdit`)} // Pass the review _id to the edit page
+                            onClick={() => navigate(`../ReviewEdit/${reviewObj.reviewId}`)} // Pass the review _id to the edit page
                           >
                             <FaWrench /> Edit
                           </Button>

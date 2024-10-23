@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
 import cartRoutes from "./routes/CarRoutes.js";
+import productRoutes from "./routes/ProductRoute.js";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -13,9 +14,12 @@ app.use(bodyParser.json());
 
 app.use("/api/cart", cartRoutes);
 
+// Routes
+app.use("/api/products", productRoutes); // Register the product routes
+
 mongoose
   .connect(
-    "mongodb+srv://isurugayantha:ooYMi2RuNCTthofk@bike.j4va9.mongodb.net/?retryWrites=true&w=majority&appName=bike",
+    "mongodb+srv://jeya38shadhujan:sha123@samplefirst.jg9ty.mongodb.net/SampleReview",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,

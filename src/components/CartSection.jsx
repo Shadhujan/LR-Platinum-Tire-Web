@@ -10,7 +10,7 @@ const Cart = () => {
     const fetchCartItems = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/cart/user/64f4e4b3e4b2b8d9457d27a8"
+          "http://localhost:5000/api/cart/user/6717d0c74c3acd439bb4d498"
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
