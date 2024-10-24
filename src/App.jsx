@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Payment from "./pages/Payment";
 import Review from "./pages/Review";
 import ReviewRead from "./pages/ReviewRead";
+import ReviewReadAdmin from "./pages/ReviewReadAdmin";
 import ReviewEdit from "./pages/ReviewEdit";
 import Cart from "./pages/Cart";
 import FloatingMessageButton from "./components/FloatingMessageButton";
@@ -36,10 +37,10 @@ function App() {
           <Route path="/repair" element={<Repair />} />
           <Route path="/review" element={<Review />} />
           <Route path="/reviewRead" element={<ReviewRead />} />
+          <Route path="/admin/reviewRead" element={<ReviewReadAdmin />} />
           <Route path="/reviewEdit/:reviewId" element={<ReviewEdit />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/Message" element={<Message />} />
-          <Route path="/reviewform" element={<ReviewForm />} />
           <Route path="/loginpage" element={<LoginPage />} />
           <Route path="/registerpage" element={<RegisterPage />} />
           <Route path="/userprofile" element={<UserProfile />} />

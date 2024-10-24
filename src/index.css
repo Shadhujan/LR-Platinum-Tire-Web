@@ -8,3 +8,7 @@ body {
   max-height: 100vh;
   overflow: auto !important;
 }
+
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */

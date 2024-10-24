@@ -71,15 +71,6 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink
-              to="/reviewform"
-              className="nav-link"
-              activeClassName="active"
-            >
-              Review Form
-            </NavLink>
-          </li>
-          <li className="nav-item">
             <NavLink to="/cart" className="nav-link" activeClassName="active">
               <i className="bi bi-cart-fill"></i>
             </NavLink>
