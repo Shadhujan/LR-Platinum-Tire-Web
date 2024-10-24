@@ -1,122 +1,156 @@
-import React from 'react';
-import { Container, Row, Col, Form, Button, Image, Card } from 'react-bootstrap';
-import logo from '../assets/IMG_5295 2.png'; // Replace with your actual logo path
+import React, { useState } from 'react';
+import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
+import './PaymentSection.css';
+import logo from '../assets/IMG_5295 2.png'; // Replace with your own logo
 
 const PaymentSection = () => {
+  const [name, setName] = useState('');
+  const [contactNumber, setContactNumber] = useState('');
+  const [address, setAddress] = useState('');
+  const [image, setImage] = useState(null); // State for the uploaded image
+
+  const handleChange = (setter) => (event) => {
+    setter(event.target.value);
+  };
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setImage(URL.createObjectURL(file)); // Preview the image
+    }
+  };
+
+  const removeImage = () => {
+    setImage(null); // Clear the image
+  };
+
   return (
-    <>
-    <div>
-      <Container className="payment-section mb-5" fluid style={{ backgroundColor: '#f2f2f2', height: '100vh', padding: '20px' }}>
-        {/* My Cart Section */}
-        <Row>
-          <Col>
-            <Button variant="link" style={{ color: '#000' }}>&lt; My Cart</Button>
-          </Col>
-        </Row>
+    <Container className="payment-container my-5">
+      <Row>
+        <Col md={8}>
+          {/* Payment Information */}
+          <Card className="mb-4">
+            <Card.Body>
+              <h5 className="mb-3"><strong>Payment</strong></h5>
+              <Row>
+                <Col><strong>Bank</strong></Col>
+                <Col><strong>Acc No.</strong></Col>
+                <Col><strong>Branch</strong></Col>
+              </Row>
+              <Row>
+                <Col>_________ Bank</Col>
+                <Col>XXXXXXXXXXXX</Col>
+                <Col>_</Col>
+              </Row>
+              <Row>
+                <Col>_________ Bank</Col>
+                <Col>XXXXXXXXXXXX</Col>
+                <Col>_</Col>
+              </Row>
+              <Row>
+                <Col>_________ Bank</Col>
+                <Col>XXXXXXXXXXXX</Col>
+                <Col>_</Col>
+              </Row>
+            </Card.Body>
+          </Card>
 
-        {/* Main Payment Section */}
-        <Row className="mt-4">
-          {/* Left Side Payment Info */}
-          <Col md={8}>
-            {/* Payment Details */}
-            <Card className="mb-4">
-              <Card.Body>
-                <h5><strong>Payment</strong></h5>
-                <hr />
-                <Row>
-                  <Col><strong>Bank</strong></Col>
-                  <Col><strong>Acc No.</strong></Col>
-                  <Col><strong>Branch</strong></Col>
-                </Row>
-                <Row>
-                  <Col>_______Bank</Col>
-                  <Col>XXXXXXXXXXX</Col>
-                  <Col>__________</Col>
-                </Row>
-                <Row>
-                  <Col>_______Bank</Col>
-                  <Col>XXXXXXXXXXX</Col>
-                  <Col>__________</Col>
-                </Row>
-                <Row>
-                  <Col>_______Bank</Col>
-                  <Col>XXXXXXXXXXX</Col>
-                  <Col>__________</Col>
-                </Row>
-              </Card.Body>
-            </Card>
+          {/* Shipping Address */}
+          <Card className="mb-4">
+            <Card.Body>
+              <h5 className="mb-3"><strong>Shipping Address</strong></h5>
+              <Form>
+                <Form.Group controlId="formName">
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control 
+                    type="text" 
+                    placeholder="Enter your name" 
+                    value={name} 
+                    onChange={handleChange(setName)} 
+                  />
+                </Form.Group>
 
-            {/* Shipping Address */}
-            <Card className="mb-4">
-              <Card.Body>
-                <Row>
-                  <Col md={10}>
-                    <h5><strong>Shipping Address</strong></h5>
-                  </Col>
-                  <Col md={2} className="text-end">
-                    <Button variant="link" style={{ color: '#888' }}>Change</Button>
-                  </Col>
-                </Row>
-                <hr />
-                <p>Name</p>
-                <p>Contact Number</p>
-                <p>Address</p>
-              </Card.Body>
-            </Card>
+                <Form.Group controlId="formContactNumber">
+                  <Form.Label>Contact Number</Form.Label>
+                  <Form.Control 
+                    type="text" 
+                    placeholder="XXX-XXX-XXXX" 
+                    value={contactNumber} 
+                    onChange={handleChange(setContactNumber)} 
+                  />
+                </Form.Group>
 
-            {/* Payment Slip */}
-            <Card className="mb-4">
-              <Card.Body>
-                <h5><strong>Payment Slip</strong></h5>
-                <hr />
-                <div className="border border-primary p-4" style={{ height: '150px', borderStyle: 'dashed' }}>
-                  <p className="text-center text-primary">Upload From Gallery</p>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
+                <Form.Group controlId="formAddress">
+                  <Form.Label>Address</Form.Label>
+                  <Form.Control 
+                    as="textarea" 
+                    rows={3} 
+                    placeholder="Enter your address" 
+                    value={address} 
+                    onChange={handleChange(setAddress)} 
+                  />
+                </Form.Group>
+                <Button variant="link" className="p-0 mt-2">Change</Button>
+              </Form>
+            </Card.Body>
+          </Card>
 
-          {/* Right Side Summary */}
-          <Col md={4}>
-            <Card className="mb-4">
-              <Card.Body>
-                <h5><strong>Summary</strong></h5>
-                <hr />
-                <Row>
-                  <Col>Subtotal</Col>
-                  <Col className="text-end">Rs. 0,000,000</Col>
-                </Row>
-                <Row>
-                  <Col>Shipping Fee</Col>
-                  <Col className="text-end">Rs. 0,000,000</Col>
-                </Row>
-              </Card.Body>
-            </Card>
-
-            {/* Image and Description */}
-            <Card>
-              <Card.Body>
-                <Image src={logo} style={{ width: '100%' }} />
-                <p className="text-center mt-2">
-                  LR Platinum Tyres Keeps Your Information And Payment Safe.
+          {/* Payment Slip Upload */}
+          <Card className="mb-4">
+            <Card.Body>
+              <h5 className="mb-3"><strong>Payment Slip</strong></h5>
+              <div className="upload-box">
+                <p className="text-center">
+                  <label htmlFor="formFile" className="upload-label">
+                    {image ? 'Uploaded Payment Slip' : 'Upload From Gallery'}
+                  </label>
+                  <Form.Control 
+                    id="formFile" 
+                    type="file" 
+                    accept="image/*" 
+                    onChange={handleImageChange} 
+                    style={{ display: 'none' }} // Hide the file input
+                  />
                 </p>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
+                {image && (
+                  <div className="text-center mt-3">
+                    <img src={image} alt="Uploaded" style={{ width: '100%', maxHeight: '200px', objectFit: 'cover', borderRadius: '8px' }} />
+                    <Button variant="danger" className="mt-2" onClick={removeImage}>Remove Slip</Button>
+                  </div>
+                )}
+              </div>
+            </Card.Body>
+          </Card>
+        </Col>
 
-        {/* Place Order Button */}
-        <Row className="mt-4">
-          <Col>
-            <Button variant="danger" size="lg" className="w-100">
-              Place Order
-            </Button>
-          </Col>
-        </Row>
-      </Container>
-      </div>
-    </>
+        {/* Order Summary */}
+        <Col md={4}>
+          <Card className="mb-4">
+            <Card.Body>
+              <h5 className="mb-3"><strong>Summary</strong></h5>
+              <Row>
+                <Col>Subtotal</Col>
+                <Col className="text-end">Rs. 0.00</Col>
+              </Row>
+              <Row>
+                <Col>Shipping Fee</Col>
+                <Col className="text-end">Rs. 0.00</Col>
+              </Row>
+              <Button variant="success" className="mt-3 w-100">Confirm and Pay</Button>
+            </Card.Body>
+          </Card>
+
+          {/* Logo and Security Information */}
+          <Card className="text-center">
+            <Card.Body>
+              <img src={logo} alt="LR Platinum Tyres" className="mb-3" style={{ width: '100px' }} />
+              <p className="small text-muted">LR Platinum Tyres Keeps Your Information And Payment Secure</p>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
-export default PaymentSection;
+export default PaymentSection;

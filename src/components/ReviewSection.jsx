@@ -1,35 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import reviewRead from "./ReviewReadSection";
-import image_ from "../assets/image.png"
+import image_ from "../assets/image.png";
 
-function Box({ onFileSelect }) {
-  const [preview, setPreview] = useState(null); // State to hold the image preview
-  const [uploaded, setUploaded] = useState(false); // State to track if image is uploaded
+function Box({ onFileSelect, reset }) {
+  const [preview, setPreview] = useState(null);
+  const [uploaded, setUploaded] = useState(false);
+  const fileInputRef = useRef(null); // Reference for the file input
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setPreview(URL.createObjectURL(file)); // Set the image preview
-      onFileSelect(file); // Call the parent function to pass the file
-      setUploaded(true); // Set uploaded to true once file is selected
+      console.log("File selected:", file);
+      setPreview(URL.createObjectURL(file));
+      onFileSelect(file);
+      setUploaded(true);
     }
   };
 
   const handleRemove = () => {
-    setPreview(null); // Reset the image preview
-    setUploaded(false); // Allow re-upload
+    setPreview(null);
+    setUploaded(false);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ""; // Clear file input for re-upload
+    }
   };
 
+  // Trigger file dialog programmatically
+  const handleBoxClick = () => {
+    if (!uploaded && fileInputRef.current) {
+      fileInputRef.current.click(); // Trigger the click event
+    }
+  };
+
+  // Reset box on form reset
+  React.useEffect(() => {
+    if (reset) {
+      setPreview(null);
+      setUploaded(false);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+    }
+  }, [reset]);
+
   return (
-    <div className="col btn btn-outline-secondary border border-dark border-2 p-2 m-3 position-relative" style={{ height: "150px" }}>
+    <div
+      className="col btn btn-outline-secondary border border-dark border-2 p-2 m-3 position-relative"
+      style={{ height: "150px" }}
+      onClick={handleBoxClick} // Trigger file input dialog on box click
+    >
       {preview ? (
         <div className="w-100 h-100">
           <img
             src={preview}
             alt="Preview"
             className="img-fluid w-100 h-100 object-fit-contain"
-            style={{ maxHeight: "150px" }} // Adjust image size to fit within the box
+            style={{ maxHeight: "150px" }}
           />
         </div>
       ) : (
@@ -49,13 +75,14 @@ function Box({ onFileSelect }) {
         />
       )}
 
-      {!uploaded && (
-        <input
-          type="file"
-          className="position-absolute w-100 h-100 opacity-0"
-          onChange={handleFileChange}
-        />
-      )}
+      {/* Invisible file input */}
+      <input
+        type="file"
+        ref={fileInputRef} // Attach the ref to the input
+        className="position-absolute w-100 h-100 opacity-0"
+        style={{ cursor: "pointer" }} // Ensure it's still clickable
+        onChange={handleFileChange}
+      />
     </div>
   );
 }
@@ -75,6 +102,8 @@ const MySVGIcon = (props) => (
 export default function ReviewSection() {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [description, setDescription] = useState(''); // State to hold the review description
+  const [loading, setLoading] = useState(false); // Loader state
+  const [reset, setReset] = useState(false); // Reset state for the form
   const navigate = useNavigate();
 
   const handleFileSelect = (file) => {
@@ -83,6 +112,7 @@ export default function ReviewSection() {
   };
 
   const handleSave = async () => {
+    setLoading(true); // Start the loader
     const formData = new FormData();
     formData.append('description', description);
     selectedFiles.forEach((file, index) => {
@@ -97,11 +127,17 @@ export default function ReviewSection() {
       const result = await response.json();
       if (response.ok) {
         console.log('Review created successfully:', result);
+        // Clear the form after successful submission
+        setDescription('');
+        setSelectedFiles([]);
+        setReset(!reset); // Toggle reset to clear all images
       } else {
         console.error('Error creating review:', result);
       }
     } catch (error) {
       console.error('Error:', error);
+    } finally {
+      setLoading(false); // Stop the loader
     }
   };
 
@@ -146,13 +182,13 @@ export default function ReviewSection() {
                 ></textarea>
               </div>
               <div className="row">
-                <Box onFileSelect={handleFileSelect} />
-                <Box onFileSelect={handleFileSelect} />
-                <Box onFileSelect={handleFileSelect} />
-                <Box onFileSelect={handleFileSelect} />
+                <Box onFileSelect={handleFileSelect} reset={reset} />
+                <Box onFileSelect={handleFileSelect} reset={reset} />
+                <Box onFileSelect={handleFileSelect} reset={reset} />
+                <Box onFileSelect={handleFileSelect} reset={reset} />
               </div>
-              <button className="btn btn-danger w-100 p-2 fw-bold" onClick={handleSave}>
-                Save
+              <button className="btn btn-danger w-100 p-2 fw-bold" onClick={handleSave} disabled={loading}>
+                {loading ? "Uploading..." : "Save"}
               </button>
             </div>
           </div>
@@ -161,4 +197,3 @@ export default function ReviewSection() {
     </>
   );
 }
-

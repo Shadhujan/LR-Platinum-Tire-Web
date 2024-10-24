@@ -1,0 +1,97 @@
+/* Hero.css */
+.hero {
+    background: linear-gradient(135deg, #411616 0%, #37171a 100%);
+}
+
+/* Description.css */
+.description-container {
+    background-color: #e7f0ff; /* Light blue background for the description section */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+    padding: 40px; /* Padding around the text */
+    margin: 20px; /* Margin around the section */
+}
+
+h2 {
+    font-size: 2.5rem; /* Size of the main heading */
+    color: #343a40; /* Darker color for the heading */
+    text-transform: uppercase; /* Uppercase for a bold look */
+    letter-spacing: 1px; /* Spacing between letters */
+    margin-bottom: 20px; /* Space below heading */
+}
+
+.card-group {
+    display: flex; /* Use flexbox to arrange cards */
+    justify-content: center; /* Center cards */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.description-card {
+    background-color: #ffffff; /* White background for cards */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Card shadow */
+    margin: 15px; /* Space between cards */
+    padding: 20px; /* Inner padding for cards */
+    flex: 1; /* Flex grow to allow equal width */
+    min-width: 250px; /* Minimum width for cards */
+    max-width: 300px; /* Maximum width for cards */
+    transition: transform 0.2s; /* Smooth scale transition */
+}
+
+.description-card:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+h4 {
+    color: #007bff; /* Bright blue for subheadings */
+    border-bottom: 2px solid #007bff; /* Bottom border for emphasis */
+    padding-bottom: 10px; /* Padding below the subheading */
+}
+
+.description-text {
+    font-size: 1.1rem; /* Size of the description text */
+    color: #555; /* Slightly lighter color for text */
+    line-height: 1.6; /* Line height for readability */
+    margin-bottom: 20px; /* Space below paragraphs */
+}
+
+.description-list {
+    list-style-type: none; /* Remove default list styles */
+    padding-left: 0; /* Remove padding */
+}
+
+.description-list li {
+    padding: 10px 0; /* Spacing between list items */
+    position: relative; /* For the bullet */
+}
+
+.description-list li::before {
+    content: '✓'; /* Custom bullet */
+    position: absolute; /* Positioning the bullet */
+    left: -20px; /* Positioning to the left */
+    color: #28a745; /* Green color for the bullet */
+    font-size: 1.2rem; /* Size of the bullet */
+}
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: 2rem; /* Responsive font size for mobile */
+    }
+    h4 {
+        font-size: 1.25rem; /* Responsive subheading size */
+    }
+}
+
+/* Additional background styling */
+.description-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1); /* Slightly transparent white overlay */
+    z-index: -1; /* Send the background layer behind content */
+    border-radius: 10px; /* Match the container's border radius */
+}

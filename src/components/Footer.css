@@ -1,84 +1,107 @@
-/* Footer container */
+/* Footer Container */
 .footer-container {
-    background-color: #f8f9fa;
-    border-top: 2px solid #e9ecef;
-  }
-  
-  /* Footer base styles */
-  .footer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start; /* Align items to the left */
-    padding: 20px; /* Increased padding for better spacing */
-  }
-  
-  /* Column styles */
-  .footer .col {
-    margin-top: 10px;
-    margin-right: 20px; /* Space between columns */
-  }
-  
-  /* Footer logo */
-  .footer-logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #333;
-  }
-  
-  /* Footer navigation */
-  .footer-nav {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .footer-link {
-    color: #6c757d;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    display: inline-block;
-    margin-bottom: 0.5rem;
-  }
-  
-  .footer-link:hover {
-    color: #007bff; /* Bootstrap primary color */
-  }
-  
-  /* Footer section heading */
-  .footer-title {
-    font-size: 1.2rem;
-    color: #333;
-    margin-bottom: 1rem;
-    font-weight: bold; /* Changed to bold for emphasis */
-  }
-  
-  /* Copyright style */
-  .footer-copyright {
-    display: block; /* Ensures it takes up the full width */
-    text-align: center; /* Centers the text for copyright */
-    color: #6c757d;
-    font-size: 0.9rem;
-    margin-top: 10px;
-  }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .footer {
-      text-align: left; /* Ensure left alignment on smaller screens */
-      flex-direction: column; /* Stack columns vertically */
-      padding: 20px; /* Ensure enough padding on smaller screens */
-      align-items: flex-start; /* Align items to the start (left) */
-      margin-left:auto; 
-     }
-  
-     .footer .col {
-       margin-bottom: 20px; /* Space between stacked columns */
-       width: auto; /* Allow columns to take full width */
-     }
-  
-     .footer-nav {
-       margin-left:auto; 
-       margin-right:auto; 
-     }
-  }
+  background-color: #2c2c2c;
+  color: #f8f9fa;
+  padding: 3px 0; /* Reduced padding */
+  text-align: center;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start; /* Aligning items at the top */
+  padding: 5px 10px; /* Significantly reduced padding */
+}
+
+/* Footer Row */
+.footer-row {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-bottom: 5px; /* Minimized margin */
+}
+
+.footer-col {
+  flex: 1;
+  max-width: 220px; /* Further reduced column width */
+  margin: 0 5px; /* Narrow margin for spacing */
+}
+
+/* Footer Logo */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #f8f9fa;
+}
+
+.footer-company {
+  margin-left: 5px; /* Reduced margin */
+  font-size: 0.9rem; /* Further reduced font size */
+  font-weight: bold;
+}
+
+.footer-description {
+  margin-top: 5px; /* Reduced margin */
+  font-size: 0.75rem; /* Reduced font size */
+}
+
+/* Footer Title */
+.footer-title {
+  font-size: 0.9rem; /* Reduced title font size */
+  margin-bottom: 5px; /* Reduced margin */
+}
+
+/* Footer Links */
+.footer-nav,
+.footer-social-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-nav li,
+.footer-social-nav li {
+  margin-bottom: 3px; /* Minimized link spacing */
+}
+
+.footer-link {
+  color: #f8f9fa;
+  text-decoration: none;
+  font-size: 0.75rem; /* Further reduced font size */
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+/* Social Media Links */
+.footer-social-nav a {
+  color: #f8f9fa;
+  text-decoration: none;
+  font-size: 0.75rem; /* Further reduced font size */
+}
+
+.footer-icon {
+  margin-right: 4px; /* Reduced icon margin */
+}
+
+.footer-social-nav a:hover {
+  color: #f1c40f;
+}
+
+/* Divider */
+.footer-divider {
+  width: 80%; /* Narrower width */
+  border-color: #888;
+  margin-bottom: 10px; /* Minimized margin */
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  font-size: 0.7rem; /* Smaller bottom text size */
+  color: #888;
+  margin-top: 5px; /* Reduced margin */
+}

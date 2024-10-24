@@ -1,81 +1,58 @@
+import { Link } from 'react-router-dom';
 import './Footer.css';
+import { FaFacebookF, FaInstagram, FaWhatsapp, FaTiktok } from 'react-icons/fa';
 
 const Footer = () => {
-    return (
-      <div className="container">
-        <footer style={{ paddingTop: '60px' }} className="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
-          <div className="col mb-3">
-            <a href="/" className="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-              <svg className="bi me-2" width="40" height="32">
+  return (
+    <div className="footer-container">
+      <footer className="footer py-4">
+        <div className="footer-row">
+          {/* Company Logo and About */}
+          <div className="footer-col">
+            <Link to="/" className="footer-logo" aria-label="Company logo">
+              <svg className="bi me-2" width="40" height="32" aria-label="Company logo">
                 <use xlinkHref="#bootstrap" />
               </svg>
-            </a>
-            <p className="text-body-secondary">&copy; 2024</p>
+              <span className="footer-company">LR Platinum Tyres</span>
+            </Link>
+            <p className="footer-description">
+              Providing premium motorbike accessories and ensuring a smooth and safe ride.
+            </p>
           </div>
-  
-          <div className="col mb-3"></div>
-  
-          <div className="col mb-3">
-            <ul className="nav flex-column">
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-body-secondary">Motorcycles</a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-body-secondary">Gears & Accessories</a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-body-secondary">Helmets</a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-body-secondary">Spare Parts</a>
-              </li>
+
+          {/* Quick Links */}
+          <div className="footer-col">
+            <h5 className="footer-title">Quick Links</h5>
+            <ul className="footer-nav">
+              <li><Link to="/store" className="footer-link">Store</Link></li>
+              <li><Link to="/contact" className="footer-link">Contact</Link></li>
+              <li><Link to="/about" className="footer-link">About Us</Link></li>
+              <li><Link to="/privacy-policy" className="footer-link">Privacy Policy</Link></li>
+              <li><Link to="/terms-and-conditions" className="footer-link">Terms & Conditions</Link></li>
             </ul>
           </div>
-  
-          <div className="col mb-3">
-            <ul className="nav flex-column">
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-body-secondary">Store</a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-body-secondary">Contact</a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-body-secondary">About</a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-body-secondary">Privacy Policy</a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-body-secondary">Terms & Condition</a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-body-secondary">Career</a>
-              </li>
+
+          {/* Social Media Links */}
+          <div className="footer-col">
+            <h5 className="footer-title">Follow Us</h5>
+            <ul className="footer-social-nav">
+              <li><a href="https://www.facebook.com/lrplatinum/" target="_blank" rel="noopener noreferrer"><FaFacebookF className="footer-icon" /> Facebook</a></li>
+              <li><a href="https://www.instagram.com/explore/locations/361957887896031/lr-platinum-tire/" target="_blank" rel="noopener noreferrer"><FaInstagram className="footer-icon" /> Instagram</a></li>
+              <li><a href="#" target="_blank" rel="noopener noreferrer"><FaWhatsapp className="footer-icon" /> WhatsApp</a></li>
+              <li><a href="https://www.tiktok.com/@lrplatinum?lang=en" target="_blank" rel="noopener noreferrer"><FaTiktok className="footer-icon" /> TikTok</a></li>
             </ul>
           </div>
-  
-          <div className="col mb-3">
-            <h5>Social Media</h5>
-            <ul className="nav flex-column">
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-body-secondary">Facebook</a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-body-secondary">Instagram</a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-body-secondary">Whatsapp</a>
-              </li>
-              <li className="nav-item mb-2">
-                <a href="#" className="nav-link p-0 text-body-secondary">Tiktok</a>
-              </li>
-            </ul>
-          </div>
-        </footer>
-      </div>
-    );
-  };
-  
-  export default Footer;
-  
+        </div>
+
+        <hr className="footer-divider" />
+
+        {/* Copyright */}
+        <div className="footer-bottom">
+          <p>&copy; 2024 LR Platinum Tyres. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Footer;

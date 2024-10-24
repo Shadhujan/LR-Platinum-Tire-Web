@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import image_ from "../assets/image.png"
+
 
 function Box({ onFileSelect, initialPreview }) {
   const [preview, setPreview] = useState(initialPreview || null); // Initial preview or null
@@ -161,11 +163,11 @@ export default function ReviewSection() {
         <div className="container text-center m-1">
           <div className="row">
             <div className="col-3 border border-1 m-2 pt-4">
-              <img src="/image.png" alt="bike" className="img-fluid" />
+              <img src={image_} alt="bike" className="img-fluid" />
             </div>
             <div className="col p-3">
               <div className="mb-3 text-start">
-                <p className="m-2 fw-bold">Add Review</p>
+                <p className="m-2 fw-bold">Edit Review</p>
                 <textarea
                   className="form-control bg-light border border-dark border-2"
                   id="exampleFormControlTextarea1"
@@ -180,7 +182,7 @@ export default function ReviewSection() {
                 ))}
               </div>
               <button className="btn btn-dark w-100 p-2 fw-bold" onClick={handleEdit}>
-                Edit
+                Reset
               </button>
               <button className="btn btn-danger w-100 p-2 fw-bold" onClick={handleUpdate}>
                 Update
