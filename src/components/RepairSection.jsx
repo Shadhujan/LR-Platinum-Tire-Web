@@ -12,7 +12,6 @@ const AppointmentForm = () => {
   });
   const [appointmentId, setAppointmentId] = useState("");
   const [appointmentData, setAppointmentData] = useState(null);
-  const [bookingId, setBookingId] = useState(""); // New state for booking ID
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -34,18 +33,16 @@ const AppointmentForm = () => {
       );
       const result = await response.json();
       if (result.appointmentId) {
-        setBookingId(result.appointmentId); // Set the booking ID from the response
         toast.success(
           `Appointment successfully booked! ID: ${result.appointmentId}`,
         );
+        setAppointment({
+          name: "",
+          mobile: "",
+          service: "",
+          date: "",
+        });
       }
-      console.log("Appointment data:", result);
-      setAppointment({
-        name: "",
-        mobile: "",
-        service: "",
-        date: "",
-      });
     } catch (error) {
       console.error("Error:", error);
       toast.error("Error booking appointment. Please try again.");
@@ -57,14 +54,24 @@ const AppointmentForm = () => {
       const response = await fetch(
         `http://localhost:3214/Server/Appointment/Read/${appointmentId}`,
       );
-      const result = await response.json();
-      setAppointmentData(result);
+      if (response.ok) {
+        const result = await response.json();
+        setAppointmentData(result);
+      } else {
+        toast.error("Appointment not found.");
+        setAppointmentData(null);
+      }
     } catch (error) {
       console.error("Error fetching appointment:", error);
+      toast.error("Error fetching appointment. Please try again.");
     }
   };
 
   const handleDelete = async () => {
+    if (!appointmentData) {
+      toast.error("No appointment selected for deletion.");
+      return;
+    }
     try {
       const response = await fetch(
         `http://localhost:3214/Server/Appointment/Delete/${appointmentId}`,
@@ -72,11 +79,19 @@ const AppointmentForm = () => {
           method: "DELETE",
         },
       );
-      const result = await response.json();
-      console.log("Deletion result:", result);
-      setAppointmentData(null); // Clear the appointment data after deletion
+      if (response.ok) {
+        const result = await response.json();
+        if (result.message === "Appointment deleted successfully") {
+          toast.success("Appointment deleted successfully");
+          setAppointmentData(null); // Clear the appointment data after deletion
+          setAppointmentId(""); // Clear the ID field
+        }
+      } else {
+        toast.error("Failed to delete appointment.");
+      }
     } catch (error) {
       console.error("Error deleting appointment:", error);
+      toast.error("Error deleting appointment. Please try again.");
     }
   };
 
@@ -122,7 +137,7 @@ const AppointmentForm = () => {
                         <strong>Mobile Num:</strong>
                       </td>
                       <td style={{ padding: "10px" }}>
-                        {appointmentData.mobile}
+                        {appointmentData.mobileNum}
                       </td>
                     </tr>
                     <tr>
@@ -188,7 +203,7 @@ const AppointmentForm = () => {
                     onChange={handleInputChange}
                     placeholder="Enter full name"
                     required
-                    style={{ fontSize: "0.8rem", padding: "7px" }} // Adjust font size and padding for input
+                    style={{ fontSize: "0.8rem", padding: "7px" }}
                   />
                 </Form.Group>
 
@@ -206,7 +221,7 @@ const AppointmentForm = () => {
                     onChange={handleInputChange}
                     placeholder="Enter mobile number"
                     required
-                    style={{ fontSize: "0.8rem", padding: "7px" }} // Adjust font size and padding for input
+                    style={{ fontSize: "0.8rem", padding: "7px" }}
                   />
                 </Form.Group>
 
@@ -222,10 +237,9 @@ const AppointmentForm = () => {
                     value={appointment.service}
                     onChange={handleInputChange}
                     required
-                    style={{ fontSize: "0.8rem", padding: "7px" }} // Adjust font size and padding for select input
+                    style={{ fontSize: "0.8rem", padding: "7px" }}
                   >
-                    <option value="">Select a service</option>{" "}
-                    {/* Placeholder option */}
+                    <option value="">Select a service</option>
                     <option value="repair">Repair</option>
                     <option value="installation">Installation</option>
                     <option value="maintenance">Maintenance</option>
@@ -246,7 +260,7 @@ const AppointmentForm = () => {
                     value={appointment.date}
                     onChange={handleInputChange}
                     required
-                    style={{ fontSize: "0.8rem", padding: "7px" }} // Adjust font size and padding for input
+                    style={{ fontSize: "0.8rem", padding: "7px" }}
                   />
                 </Form.Group>
 
@@ -291,15 +305,13 @@ const AppointmentForm = () => {
                     width: "100%",
                   }}
                 >
-                  Search Appointment
+                  Search
                 </Button>
               </div>
             </div>
           </Col>
         </Row>
       </Container>
-
-      {/* Toast Container for Notifications */}
       <ToastContainer />
     </div>
   );
