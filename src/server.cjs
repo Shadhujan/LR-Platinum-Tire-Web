@@ -254,24 +254,42 @@ app.put("/Server/Review/Update/:reviewId", upload.any(), async (req, res) => {
   const { reviewId } = req.params; // Assuming the review ID is passed as a parameter
 
   try {
-    // Assuming you're updating a review for a specific user
-    const user = await Review.findOne({ "reviews._id": reviewId });
+    // // Assuming you're updating a review for a specific user
+    // const testid="67173e23c95a010030ca515f"
+    // // const user = await Review.findOne({ "reviews._id": reviewId });
+    // const user = await Review.findOne({ testid});
+    // console.log(user);
+    // console.log(reviewId);
+    // if (!user) {
+    //   console.log("asdfa",user);
+    //   console.log(reviewId);
+    //   return res.status(404).json({ message: "Review not found",user,reviewId });
+    // }
+
+    const user = await Review.findOne({ "_id": reviewId });
+    console.log("AAA");
     if (!user) {
+      console.log("BBB");
       return res.status(404).json({ message: "Review not found" });
     }
+    console.log("CCC",user);
 
     // Find the specific review by its ID and update its description and image
-    const review = user.reviews.id(reviewId);
+    const review = user.reviews[0];
+    console.log("DDD",review.description);
     if (review) {
       review.description = description;
-      review.image =
-        files.length > 0
-          ? files.map((file) => file.buffer.toString("base64")).join(",")
-          : review.image; // Update the image if new files are uploaded
+      // review.image =
+      //   files.length > 0
+      //     ? files.map((file) => file.buffer.toString("base64")).join(",")
+      //     : review.image; // Update the image if new files are uploaded
     }
 
+    console.log("EEE",review.description);
+    console.log("FFF",user);
+
     await user.save(); // Save the changes to the user document
-    res.status(200).json({ message: "Review updated successfully" });
+    res.status(200).json({ message: "Review updated successfully",user});
   } catch (error) {
     res.status(500).json({ message: "Error updating review", error });
   }
