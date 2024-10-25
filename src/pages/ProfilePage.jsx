@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
@@ -35,6 +37,8 @@ const ProfilePage = () => {
   };
 
   return (
+    <div>
+      <Navbar />
     <div className="container">
       {user ? (
         <div className="card p-4">
@@ -71,6 +75,8 @@ const ProfilePage = () => {
       ) : (
         <div>Loading...</div>
       )}
+    </div>
+    <Footer />
     </div>
   );
 };

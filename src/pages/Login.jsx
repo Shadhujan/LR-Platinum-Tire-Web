@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -46,6 +48,8 @@ const LoginPage = () => {
   };
 
   return (
+    <div>
+      <Navbar />
     <div
       className="container d-flex justify-content-center align-items-center"
       style={{ minHeight: "100vh" }}
@@ -113,6 +117,8 @@ const LoginPage = () => {
           Don't have an account? <a href="/registerpage">Register</a>
         </p>
       </div>
+    </div>
+    <Footer />
     </div>
   );
 };

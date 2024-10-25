@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const RegisterPage = () => {
   const [username, setUsername] = useState("");
@@ -49,6 +51,8 @@ const RegisterPage = () => {
   };
 
   return (
+    <div>
+      <Navbar />
     <div
       className="container d-flex justify-content-center align-items-center"
       style={{ minHeight: "100vh" }}
@@ -129,6 +133,8 @@ const RegisterPage = () => {
           </p>
         </form>
       </div>
+    </div>
+    <Footer />
     </div>
   );
 };
