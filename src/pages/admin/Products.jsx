@@ -64,7 +64,7 @@ function Products() {
       <div className="flex justify-between pl-16 p-3 font-bold text-lg">
         <Icon
           icon="icon-park-solid:add-one"
-          style={{ color: "red" }}
+          style={{ color: "red",  marginRight:"90%"}}
           className="fixed bottom-5 right-5 text-4xl "
           onClick={() => navigate("/admin/add-product")}
         />
