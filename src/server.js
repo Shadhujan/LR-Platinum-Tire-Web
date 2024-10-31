@@ -414,7 +414,6 @@ const appointmentSchema = new mongoose.Schema(
 );
 
 const Appointment = mongoose.model("Appointment", appointmentSchema);
-
 // Create Appointment
 app.post("/Server/Appointment/Create", async (req, res) => {
   const { name, mobile, service, date } = req.body;
